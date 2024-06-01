@@ -32,11 +32,11 @@
             </div>
             <div class="form-group">
                 <label>CPF</label>
-                <input type="text" name="cpf" id="cpf" />
+                <input type="text" name="cpf" id="cpf" onkeypress="return isNumber(event)" placeholder="XXX.XXX.XXX-XX" />
             </div>
             <div class="form-group">
                 <label>Telefone</label>
-                <input type="tel" name="telefone" id="telefone" />
+                <input type="tel" name="telefone" id="telefone" onkeypress="return isNumber(event)" placeholder="(XX) XXXXX-XXXX" />
             </div>
             <div class="form-buttons">
                 <button onclick="salvar()">Salvar</button>
