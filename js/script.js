@@ -80,14 +80,16 @@ function salvar() {
             body: JSON.stringify(cliente),
         })
             .then((response) => {
+                clienteAlterado = null;
+                //limpa o form
+                limparForm();
+                ocultarModal();
+                recarregarClientes();
                 alert("Cliente cadastrado com sucesso");
             })
             .catch((error) => {
                 alert("Ops... algo deu errado");
             });
-
-        //adiciona o objeto cliente no vetor de clientes
-        clientes.push(cliente);
     } else {
         clienteAlterado.nome = nome;
         clienteAlterado.cpf = cpf;
@@ -100,22 +102,17 @@ function salvar() {
             body: JSON.stringify(clienteAlterado),
         })
             .then((response) => {
-                alert("Cliente alterado com sucesso");
+                clienteAlterado = null;
+                //limpa o form
+                limparForm();
+                ocultarModal();
                 recarregarClientes();
+                alert("Cliente alterado com sucesso");
             })
             .catch((error) => {
                 alert("Não foi possivel alterar o cliente");
             });
     }
-
-    clienteAlterado = null;
-
-    //limpa o form
-    limparForm();
-
-    ocultarModal();
-
-    exibirDados();
 }
 
 function exibirDados() {
