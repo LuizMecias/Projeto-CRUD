@@ -10,12 +10,23 @@
 <body onload="recarregarClientes()">
     <h1>Gerenciamento de clientes</h1>
     <button onclick="adicionar()">Adicionar</button>
+    <div id="container-busca">
+        <label>Buscar cliente:</label>
+        <input type="text" name="nomeBuscado" id="nomeBuscado" placeholder="Digite o nome..." onkeyup="buscarCliente()">
+    </div>
+    <div id="container-ordem">
+        <label>Ordenar clientes:</label>
+        <button onclick="ordenarClientesCrescente()">Crescente</button>
+        <button onclick="ordenarClientesDecrescente()">Decrescente</button>
+    </div>
     <table id="table-customers">
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>CPF</th>
                 <th>Telefone</th>
+                <th>Elemento 1</th>
+                <th>Elemento 2</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -32,11 +43,19 @@
             </div>
             <div class="form-group">
                 <label>CPF</label>
-                <input type="text" name="cpf" id="cpf" onkeypress="return isNumber(event)" placeholder="XXX.XXX.XXX-XX" />
+                <input type="text" name="cpf" id="cpf" placeholder="xxx.xxx.xxx-xx" maxlength="14" onkeypress="return isNumber(event)" onkeyup="applyMaskCPF(event)" />
             </div>
             <div class="form-group">
                 <label>Telefone</label>
-                <input type="tel" name="telefone" id="telefone" onkeypress="return isNumber(event)" placeholder="(XX) XXXXX-XXXX" />
+                <input type="tel" name="telefone" id="telefone" placeholder="(xx) xxxxx-xxxx" maxlength="15" onkeypress="return isNumber(event)" onkeyup="applyMaskTelefone(event)" />
+            </div>
+            <div class="form-group">
+                <label>Elemento 1</label>
+                <input type="text" name="elemento1" id="elemento1" />
+            </div>
+            <div class="form-group">
+                <label>Elemento 2</label>
+                <input type="text" name="elemento2" id="elemento2" />
             </div>
             <div class="form-buttons">
                 <button onclick="salvar()">Salvar</button>
